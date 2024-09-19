@@ -1,0 +1,19 @@
+<div class="result_container">
+  <h2>Your results</h2>
+
+  <p>
+    Your results are shown below based on the information you provided. To
+    adjust the results, edit the form and click “calculate repayments” again.
+  </p>
+  <div class="result_box">
+    <div class="monthly">
+      <p>Your monthly repayments</p>
+      <span>{{ monthlyPayment | currency : "EUR" }}</span>
+    </div>
+    <hr />
+    <div class="totalpay">
+      <p>Total you'll repay over the term</p>
+      <p class="mytotal">{{ total | currency : "EUR" }}</p>
+    </div>
+  </div>
+</div>

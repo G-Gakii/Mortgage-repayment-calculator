@@ -1,0 +1,136 @@
+<div class="container">
+  <div class="calculator_container">
+    <div class="title">
+      <h2>Mortgage Calculator</h2>
+      <span (click)="clear()">Clear All</span>
+    </div>
+    <form action="" [formGroup]="calculateForm">
+      <div class="amount">
+        <label for="amount">Mortgage Amount</label> <br />
+        <div
+          class="amount_box"
+          id="amountBox"
+          [ngStyle]="{
+            'border-color': calculateForm.controls['amount'].invalid
+              ? 'red'
+              : ''
+          }"
+        >
+          <span
+            [ngStyle]="{
+              'background-color': calculateForm.controls['amount'].invalid
+                ? 'red'
+                : '',
+              color: calculateForm.controls['amount'].invalid ? 'white' : ''
+            }"
+            >&euro;</span
+          >
+          <input
+            type="number"
+            name="amount"
+            id="amount"
+            formControlName="amount"
+          />
+        </div>
+        @if (calculateForm.controls['amount'].invalid) {
+        <span class="err">This field is required</span>}
+      </div>
+
+      <div class="term_rate" id="valuecontainer">
+        <div class="term_container">
+          <label for="term">Mortgage Term</label><br />
+          <div
+            class="box"
+            id="years_box"
+            [ngStyle]="{
+              'border-color': calculateForm.controls['term'].invalid
+                ? 'red'
+                : ''
+            }"
+          >
+            <input type="number" name="term" id="term" formControlName="term" />
+            <span
+              [ngStyle]="{
+                'background-color': calculateForm.controls['term'].invalid
+                  ? 'red'
+                  : '',
+                color: calculateForm.controls['term'].invalid ? 'white' : ''
+              }"
+              >Years</span
+            >
+          </div>
+          @if(calculateForm.controls['term'].invalid){
+          <span class="err">This field is required</span>
+          }
+        </div>
+
+        <div class="rate_container">
+          <label for="rate">Interest Rate</label><br />
+          <div
+            class="box"
+            id="rate_per"
+            [ngStyle]="{
+              'border-color': calculateForm.controls['rate'].invalid
+                ? 'red'
+                : ''
+            }"
+          >
+            <input type="number" name="rate" id="rate" formControlName="rate" />
+            <span
+              [ngStyle]="{
+                'background-color': calculateForm.controls['rate'].invalid
+                  ? 'red'
+                  : '',
+                color: calculateForm.controls['rate'].invalid
+                  ? 'white'
+                  : 'initial'
+              }"
+              >%</span
+            >
+          </div>
+          @if(calculateForm.controls['rate'].invalid){
+          <span class="err">This field is required</span>
+          }
+        </div>
+      </div>
+      <div class="type_container">
+        <p>Mortgage Type</p>
+        <div class="repay total">
+          <input
+            type="radio"
+            name="type"
+            id="total"
+            formControlName="type"
+            value="repayment"
+          />
+          <label for="total">Repayment</label>
+        </div>
+        <div class="repay interest">
+          <input
+            type="radio"
+            name="type"
+            id="interest"
+            formControlName="type"
+            value="interest"
+          />
+          <label for="interest">Interest Only </label>
+        </div>
+        @if(calculateForm.controls['type'].invalid){
+        <span class="err">This field is required</span>
+        }
+      </div>
+      <button type="submit" #btn (click)="onsubmit()">
+        <img src="assets/images/icon-calculator.svg" alt="calculator icon" />
+        Calculate Repayments
+      </button>
+    </form>
+  </div>
+  @defer (on interaction(btn)) { @if (calculateForm.valid) {
+  <app-results
+    [monthlyPayment]="monthlypayment"
+    [total]="totalpayment"
+  ></app-results>
+  } @else { <app-result-placeholder></app-result-placeholder>}}@placeholder {
+  <app-result-placeholder></app-result-placeholder>
+  }
+</div>

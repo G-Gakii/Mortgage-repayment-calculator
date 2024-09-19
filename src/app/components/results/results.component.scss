@@ -1,0 +1,45 @@
+@import "../../../styles/variable.scss";
+
+.result_container {
+  background-color: $Slate900;
+  height: 100%;
+  padding: 3rem;
+  border-radius: 2rem;
+  border-bottom-left-radius: 5rem;
+  border-top-left-radius: 0;
+  h2 {
+    color: $White;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  p {
+    color: $Slate300;
+    line-height: 1.5;
+    margin: 1.5rem 0;
+    font-size: 1.2rem;
+  }
+  .result_box {
+    background-color: hsl(202, 55%, 10%);
+    padding: 1.5rem;
+    border-top: 3px solid $Lime;
+    border-radius: 1rem;
+    margin: 2rem 0 0;
+    span {
+      color: $Lime;
+      font-size: 3rem;
+    }
+    .monthly {
+      padding-bottom: 1rem;
+    }
+    p.mytotal {
+      font-size: 1.5rem;
+      color: $White;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .result_container {
+    border-radius: 0;
+  }
+}
