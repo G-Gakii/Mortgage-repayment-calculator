@@ -11,4 +11,7 @@ import { Component, Input } from '@angular/core';
 export class ResultsComponent {
   @Input() monthlyPayment!: number;
   @Input() total!: number;
+  @Input() interest!: number;
+  @Input() monthlyInterest!: number;
+  @Input() type!: string;
 }

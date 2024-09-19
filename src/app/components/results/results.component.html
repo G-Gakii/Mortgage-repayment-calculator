@@ -8,12 +8,22 @@
   <div class="result_box">
     <div class="monthly">
       <p>Your monthly repayments</p>
+      @if(type==="repayment"){
       <span>{{ monthlyPayment | currency : "EUR" }}</span>
+
+      } @else {
+      <span>{{ monthlyInterest | currency : "EUR" }}</span>
+      }
     </div>
     <hr />
     <div class="totalpay">
       <p>Total you'll repay over the term</p>
+      @if(type==="repayment"){
       <p class="mytotal">{{ total | currency : "EUR" }}</p>
+
+      } @else {
+      <p class="mytotal">{{ interest | currency : "EUR" }}</p>
+      }
     </div>
   </div>
 </div>

@@ -27,6 +27,8 @@ export class CalculatorComponent {
   monthlypayment: number = 0;
   totalpayment: number = 0;
   interest: number = 0;
+  interestPerMonth = 0;
+  type!: string;
 
   calculateForm: FormGroup = new FormGroup({
     amount: new FormControl(1, [Validators.required, Validators.min(1)]),
@@ -40,6 +42,7 @@ export class CalculatorComponent {
   onsubmit() {
     if (this.calculateForm.valid) {
       this.mortgageterm = this.calculateForm.value;
+      this.type = this.mortgageterm.type;
       let monthlyInterest = this.mortgageterm.rate / 100 / 12;
       let numberOfMonths = this.mortgageterm.term * 12;
       this.monthlypayment =
@@ -49,6 +52,9 @@ export class CalculatorComponent {
         (Math.pow(1 + monthlyInterest, numberOfMonths) - 1);
 
       this.totalpayment = this.monthlypayment * numberOfMonths;
+
+      this.interest = (this.mortgageterm.amount * this.mortgageterm.rate) / 100;
+      this.interestPerMonth = this.interest / 12;
     } else {
       alert('Form is invalid. Please fill out all required fields.');
     }
