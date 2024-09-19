@@ -31,13 +31,16 @@ Users should be able to:
 - See hover and focus states for all interactive elements on the page
 
 ### Screenshot
-
-![](./screenshot.jpg)
+-desktop
+![desktop](https://github.com/G-Gakii/Mortgage-repayment-calculator/blob/main/public/assets/screensots/desktop.png)
+- mobile
+  
+![mobile display](https://github.com/G-Gakii/Mortgage-repayment-calculator/blob/main/public/assets/screensots/mobile.png)
 
 ### Links
 
 - Solution URL: (http://localhost:4200/)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: (https://mortgagerepaymentcalculator-gallant-g.netlify.app)
 
 ## My process
 
